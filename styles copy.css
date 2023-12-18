@@ -1,0 +1,624 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --primary: #96B6C5;
+    --secondary: #ADC4CE;
+    --tertiery: #EEE0C9;
+    --accent: #F1F0E8;
+}
+
+body {
+    background-color: var(--secondary);
+    height: 100vh;
+    width: 100vw;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.wrapper div {
+    min-height: 20px;
+}
+
+.column-wrapper {
+
+}
+
+.parent {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+}
+
+.parent > div {
+    padding: 10px;
+}
+
+.main {
+    grid-row: span 2;
+}
+
+.input{
+    grid-row: 3;
+}
+
+.input-wrapper {
+    width: 100%;
+}
+
+.button-layout {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    position: relative;
+    flex-wrap: wrap;
+}
+
+.highscore {
+
+}
+
+.info {
+
+}
+
+.character-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 20px;
+    min-height: 30px;
+    background-color: whitesmoke;
+    border-bottom: 2px solid black;
+    margin: 0.25rem;
+}
+
+.character-box * {
+    font-size: 1.5rem;
+}
+
+.wrong-guesses {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.wrong-guesses div{
+    min-width: 20px;
+    min-height: 30px;
+    margin: 0.25rem;
+}
+
+header {
+    position: relative;
+    width: 100%;
+    height: 10vh;
+    background-color: var(--primary);
+    border: 2px solid var(--tertiery);
+    border-top: none;
+}
+
+header .title {
+    position: absolute;
+    margin: auto;
+}
+
+.gallow {
+    width: 100%;
+    height: 80%;
+    padding: 10px;
+}
+
+.gallow img {
+    margin-bottom: auto;
+    width: 90%;
+    height: auto;
+}
+
+.settings-container {
+    position: absolute;
+    right: 0;
+    height: 10vh;
+    width: 10vh;
+}
+
+.settings {
+    cursor: pointer;
+}
+
+.settings-list {
+    position: absolute;
+    bottom: -99px;
+    right: -2px;
+    width: 20vw;
+    height: 100px;
+    background-color: var(--primary);
+    border: 2px solid var(--tertiery);
+    border-top: none;
+}
+
+.settings-content {
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding: 8px;
+}
+
+.settings-content div {
+    width: 100%;
+    height: 50%;
+}
+
+.signature-wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column-reverse;
+}
+
+#toggle {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 48px;
+    height: 24px;
+    border-radius: 26px;
+    background-color: #333;
+    position: absolute;
+    transition: all 0.5s ease-in;
+    cursor: pointer;
+    z-index: 1;
+}
+
+#toggle::before {
+    content: "";
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #EEE;
+    position: absolute;
+    top: 50%;
+    left: 3px;
+    transform: translateY(-50%);
+    transition: all 0.5s ease-in;
+}
+
+#toggle:checked {
+    background: #03FFC0;
+}
+
+#toggle:checked::before {
+    background: #333;
+    left: 25px;
+}
+
+.hidden {
+    display: none;
+}
+
+.shake-animation:focus {
+    animation: horizontal-shaking 0.5s ease;
+}
+
+.active-difficulty {
+    color: red;
+}
+
+/* .corner-and-highlight {
+    border-radius: 8px;
+    border: 1px solid var(--tertiery);
+} */
+
+@keyframes horizontal-shaking {
+    0% { transform: translateX(0);}
+    16% { transform: translateX(5px);}
+    33% { transform: translateX(-5px) }
+    50% { transform: translateX(5px);}
+    66% { transform: translateX(-5px) }
+    83% { transform: translateX(5px);}
+    100% { transform: translateX(0);}
+}  
+
+
+
+
+@media screen and (min-width: 800px){
+    .wrong-guesses {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+    
+    .wrong-guesses div{
+        width: fit-content;
+        width: 40%;
+        margin-right: auto;
+
+        min-width: 20px;
+        min-height: 30px;
+        margin: 0.25rem;
+    }
+    
+    .narrow {
+        width: 20%;
+        height: 100%;
+    }
+
+    .row-wrapper {
+        display: flex; 
+        width: 100%;
+        height: 100%;
+    }
+
+    .column-wrapper {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+
+/* * 
+
+du jobbade med att fixa css för mobil först approach.
+
+
+
+    .parent {
+        display: grid;
+        grid-template-columns: 4fr 1fr;
+        grid-template-rows: repeat(4, 1fr);
+        grid-column-gap: 8px;
+        grid-row-gap: 8px;
+        padding: 10px;
+        height: 90vh;
+        width: 100%;
+    }
+
+    .row-wrapper {
+        display: flex; 
+        width: 100%;
+        height: 100%;
+    }
+
+    .column-wrapper {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+    }
+
+    .narrow {
+        width: 20%;
+        height: 100%;
+    }
+
+    .main {
+        background-color: var(--primary);
+        grid-row: 1 / span 3;
+    }
+
+    .highscore {
+        grid-row: 1;
+        background-color: var(--primary);
+    }
+    
+    .input {
+        grid-row: 4;
+        background-color: var(--primary);
+    }
+    .parent > div {
+        padding: 10px;
+    }
+    
+    .main {
+        background-color: var(--primary);
+        grid-row: 1 / span 3;
+    }
+    
+    .gallow {
+        width: 100%;
+        height: 80%;
+    }
+    
+    .gallow img {
+        margin-bottom: auto;
+    }
+    
+    .correct-guesses {
+        width: 100%;
+        min-height: 20%;
+    }
+    
+    .wrong-guesses {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+    
+    .wrong-guesses div{
+        width: fit-content;
+        width: 40%;
+        margin-right: auto;
+    }
+    
+    .character-box{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-width: 30px;
+        min-height: 40px;
+        background-color: whitesmoke;
+        border-bottom: 2px solid black;
+        margin: 0.25rem;
+    }
+    
+    .character-box * {
+        font-size: 2rem;
+    }
+    
+    input {
+        height: 4em;
+        width: 25em;
+        border-radius: 4px 0 0 4px;
+    }
+    
+    #guess-button {
+        height: 4em;
+        width: 4em;
+        border-radius: 0 4px 4px 0;
+    }
+    
+    #reset-button {
+        height: 4em;
+        width: 4em;
+    }
+    
+    .button-layout {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        position: relative;
+    }
+    
+    .overlay {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        background-color: var(--primary);
+    }
+    
+    .overlay button {
+        margin: auto;
+    }
+    
+    .overlay-text {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+        width: 70%;
+        padding: 8px;
+    }
+    
+    .overlay-text div {
+        width: 100%;
+    }
+    
+    .info {
+        grid-row: 2 / span 3;
+        background-color: var(--primary);
+    }
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.parent > div {
+    padding: 10px;
+}
+
+.main {
+    background-color: var(--primary);
+    grid-row: 1 / span 3;
+}
+
+.gallow {
+    width: 100%;
+    height: 80%;
+}
+
+.gallow img {
+    margin-bottom: auto;
+}
+
+.correct-guesses {
+    width: 100%;
+    min-height: 20%;
+}
+
+.wrong-guesses {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.wrong-guesses div{
+    width: fit-content;
+    width: 40%;
+    margin-right: auto;
+}
+
+.character-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 30px;
+    min-height: 40px;
+    background-color: whitesmoke;
+    border-bottom: 2px solid black;
+    margin: 0.25rem;
+}
+
+.character-box * {
+    font-size: 2rem;
+}
+
+
+
+input {
+    height: 4em;
+    width: 25em;
+    border-radius: 4px 0 0 4px;
+}
+
+#guess-button {
+    height: 4em;
+    width: 4em;
+    border-radius: 0 4px 4px 0;
+}
+
+#reset-button {
+    height: 4em;
+    width: 4em;
+}
+
+.button-layout {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    position: relative;
+}
+
+.overlay {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary);
+}
+
+.overlay button {
+    margin: auto;
+}
+
+.overlay-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    width: 70%;
+    padding: 8px;
+}
+
+
+.overlay-text div {
+    width: 100%;
+}
+
+.info {
+    grid-row: 2 / span 3;
+    background-color: var(--primary);
+}
+
+
+
+@keyframes horizontal-shaking {
+   0% { transform: translateX(0);}
+   16% { transform: translateX(5px);}
+   33% { transform: translateX(-5px) }
+   50% { transform: translateX(5px);}
+   66% { transform: translateX(-5px) }
+   83% { transform: translateX(5px);}
+   100% { transform: translateX(0);}
+}   
+
+@media screen and (max-width: 800px){
+
+    .parent {
+        display: grid;
+        grid-template-columns: 1fr; 
+        grid-template-rows: repeat(5, 33vh); 
+        grid-column-gap: 8px;
+        grid-row-gap: 8px;
+        width: 100vw;
+    }
+
+    .main {
+        grid-row: span 2;
+    }
+
+    .gallow {
+        height: auto;
+        padding-bottom: 10px;
+    }
+
+    #gallow-image {
+        width: 100%;
+        height: auto;
+        
+    }
+
+    .main .row-wrapper {
+        flex-direction: column;
+    }
+
+    #wrong-guess-wrapper {
+        width: 100%;
+        height: 20%;
+    }
+
+    .character-box{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: whitesmoke;
+        border-bottom: 2px solid black;
+    }
+
+    .input {
+        grid-row: 3;
+    }
+
+    .button-layout {
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+    .info {
+        grid-row: 4;
+    }
+    
+    .highscore {
+        grid-row: 5;
+    }
+} */
