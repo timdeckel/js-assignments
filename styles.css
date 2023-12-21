@@ -13,8 +13,6 @@
 
 body {
     background-color: var(--secondary);
-    height: 100vh;
-    width: 100vw;
 }
 
 .header {
@@ -103,8 +101,8 @@ body {
     width: 100%;
 }
 
-.main {
-
+.parent > div {
+    border-bottom: 2px solid rgb(100, 100, 100);;
 }
 
 .gallow {
@@ -113,7 +111,6 @@ body {
 }
 
 .gallow img {
-    margin-bottom: auto;
     width: 90%;
     height: auto;
     margin: 5px 0;
@@ -140,7 +137,7 @@ body {
     min-width: 20px;
     min-height: 30px;
     background-color: whitesmoke;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid rgb(100, 100, 100);
     margin: 0.25rem;
     margin-top: 0;
 }
@@ -148,11 +145,13 @@ body {
 .input {
    position: relative;
    padding: 10px;
+   height: 20vh;
 }
 
 .button-layout{
     display: flex;
     flex-wrap: wrap;
+    height: 100%;
 }
 
 .input-wrapper {
@@ -168,11 +167,6 @@ body {
     width: 50%;
 }
 
-#reset-button {
-    height: 60%;
-    width: 60%;
-}
-
 .overlay {
     display: flex;
     flex-direction: column;
@@ -180,9 +174,14 @@ body {
     width: 100%;
     height: 100%;
     justify-content: center;
-    background-color: green;
+    background-color: var(--secondary);
     top: 0px;
     left: 0px;
+}
+
+.overlay > .large-button {
+    width: 60%;
+    margin: 4px auto ;
 }
 
 .overlay-text {
@@ -197,6 +196,18 @@ body {
 
 .highscore {
     min-height: 15vh;
+}
+
+.highscore-list {
+    display: flex;
+    padding: 6px;
+}
+
+.highscore-container {
+    font-weight: bold;
+    border-radius: 6px;
+    padding: 6px 18px;
+    background-color: darksalmon;
 }
 
 .info {
@@ -226,3 +237,74 @@ body {
     display: none;
 }
 
+.input-field {
+    border-radius: 6px;
+    padding: 6px;
+    height: 45px;
+    border: 2px solid rgb(100, 100, 100);
+}
+
+.large-button {
+    border-radius: 6px;
+    height: 45px;
+    margin-left: 3px;
+    padding: 6px 12px;
+    border: none;
+    background-color: darksalmon;
+}
+
+.small-button {
+    border-radius: 6px;
+    padding: 4px;
+    margin: 4px;
+    border: none;
+}
+
+.input-wrapper .input-field{
+    border-radius: 6px 0 0 6px;
+}
+
+.input-wrapper .large-button{
+    border-radius: 0 6px 6px 0;
+}
+
+.input-field, .large-button, .active-difficulty, .highscore-container {
+    box-shadow: 4px 4px 0px 0px rgba(0,0,0,0.3);
+    -webkit-box-shadow: 4px 4px 0px 0px rgba(0,0,0,0.3);
+    -moz-box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 0.3); 
+}
+
+.active-difficulty {
+    color: whitesmoke;
+    background-color: darksalmon;
+    border: 2px solid rgb(100, 100, 100);
+}
+
+.headline {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.shake-animation:focus {
+    animation: horizontal-shaking 0.5s ease;
+}
+
+@keyframes horizontal-shaking {
+    0% { transform: translateX(0);}
+    16% { transform: translateX(5px);}
+    33% { transform: translateX(-5px) }
+    50% { transform: translateX(5px);}
+    66% { transform: translateX(-5px) }
+    83% { transform: translateX(5px);}
+    100% { transform: translateX(0);}
+}  
+
+@media screen and (min-width: 800px) {
+
+    .gallow img {
+        width: 50%;
+        height: auto;
+        margin: 5px 0;
+    }
+
+}

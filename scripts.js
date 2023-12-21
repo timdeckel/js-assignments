@@ -341,11 +341,17 @@ function updateGallow(oofNumber){
     
 }
 
+
+// kan behöva skrivas om så den uppdaterar listan korrekt
+//dvs efter highscore och inte efter kronologisk ordning
 function updateHighscore(userName){
     console.log(userName)
+    let highscoreWrapper = document.createElement('div');
+    highscoreWrapper.classList.add('highscore-container')
     let highscoreElement = document.createElement("p");
+    highscoreWrapper.appendChild(highscoreElement);
     highscoreElement.textContent = userName + `: ${winStreak}`;
-    highscore.appendChild(highscoreElement);
+    highscore.appendChild(highscoreWrapper);
 }
 
 
