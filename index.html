@@ -8,21 +8,19 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body id="theme-switch" class="light-theme">
-    <header class="center">
+    <header class="header center">
         <p class="title">Hangman</p>
-        <div class="settings-container center">
-            <div class="settings">
+            <div class="settings center">
                 <img id="settings-icon" src="images/Settings-Light.png" alt="">
-                <div id="settings-list" class="settings-list hidden">
-                    <div class="settings-content center">
-                        <div class="darkmode-switch">
-                            <p>Dark Mode</p>
-                            <input type="checkbox" id="toggle">
-                        </div>
-                        <div class="signature-wrapper">
-                            <p id="signature">Made by: Tim Deckel</p>
-                        </div>
-                    </div>
+            </div>
+        <div id="settings-list" class="settings-list hidden">
+            <div class="settings-content center">
+                <div class="darkmode-switch">
+                    <p>Dark Mode</p>
+                    <input type="checkbox" id="toggle">
+                </div>
+                <div class="signature-wrapper">
+                    <p id="signature">Made by: Tim Deckel</p>
                 </div>
             </div>
         </div>
@@ -34,45 +32,49 @@
                     <div class="gallow center">
                         <img id="gallow-image" src="images/Hangman-0.png" alt="Hangman-0" class="corner-and-highlight">
                     </div>
-                    <div class="hint center" id="hint"></div>
+                    <div class="hint-wrapper">
+                        <div class="hint center" id="hint"></div>
+                    </div>
                     <div id="correct-guesses" class="correct-guesses center"></div>
                 </div>
-                <div id="wrong-guess-wrapper" class="narrow column-wrapper corner-and-highlight">
+                <div id="wrong-guess-wrapper" class=" corner-and-highlight">
                     <div class="headline center">Fel chars</div>
-                    <div id="wrong-guesses" class="wrong-guesses"></div>
+                    <div id="wrong-guesses" class="wrong-guesses center"></div>
                 </div>
             </div>
         </div>
         <div class="input corner-and-highlight">
             <div class="wrapper button-layout">
-                <div id="overlay" class="overlay corner-and-highlight hidden">
+                <div id="overlay" class="overlay corner-and-highlight hidden center">
                     <div id="overlay-text" class="overlay-text">
                         <div id="text-content" class="top-content ">
                             <p id="top-text"></p>
                             <p id="bottom-text"></p>
                         </div>
-                        <div id="username-input" class="bottom-content hidden">
+                        <div id="username-input" class="bottom-content center ">
                             <input id="username-input-element" type="text" placeholder= " Enter a Username to save your score!">
                             <button id="username-submit" type="submit">Submit</button>
                         </div> 
                     </div>
                     <button id="play-again">Play again</button>
                 </div>
-                <div class="input-wrapper">
+                <div class="input-wrapper center">
                     <input id="input" type="text">
                 <button id="guess-button" class="button">Guess</button>
                 </div>
-                <div>
+                <div class="difficulty-wrapper">
                     <div class="title">
                         <p class="headline center">difficulty</p>
                     </div>
-                    <div>
+                    <div class="center">
                         <button id="easy-button" class="button active-difficulty">Easy</button>
                         <button id="medium-button" class="button">Medium</button>
                         <button id="hard-button" class="button">Hard</button>
                     </div>
                 </div>
-                <button id="reset-button" class="button">Reset</button>
+                <div class="reset-button-wrapper center">
+                    <button id="reset-button" class="button">Reset game</button>
+                </div>
             </div>
         </div>
         <div class="highscore corner-and-highlight">
@@ -89,15 +91,20 @@
             <div class="title">
                 <p class="headline center">info</p>
             </div>
-            <div class="text-box">
-                <p>Guess by either pressing the guess button or by pressing enter.</p>
-                <p>Easy mode:</p>
-                <p></p>9 lives and you get a hint.</p>
-                <p>Medium mode: </p>
-                <p>6 lives and no hint.</p>
-                <p>Hard mode: </p>
-                <p>3 lives and no hint.</p>
-                <p>Pressing reset will generate a new word.</p>
+            <div class="text-box center">
+                <div class="ett">
+                    <p>Guess by either pressing the guess button or by pressing enter.</p>
+                    <p>Pressing reset will generate a new word.</p>
+                </div>
+                <div class="två">
+                    <p>Easy mode:</p>
+                    <p></p>9 lives and you get a hint.</p>
+                    <p>Medium mode: </p>
+                    <p>6 lives and no hint.</p>
+                    <p>Hard mode: </p>
+                    <p>3 lives and no hint.</p>
+                </div>
+
             </div>
         </div>
     </div>

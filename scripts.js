@@ -368,4 +368,11 @@ console.log(secretWordArray);//  ska bort sen
 
 - gör det fint   
 
+
+
+
 */
+
+
+
+
