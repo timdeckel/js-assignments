@@ -41,7 +41,7 @@ let incorrectGuessArray = new Array();
 let correctGuessCount = 0;
 let wrongGuessCount = 0;
 let winStreak = 0;
-let maxWrongGuesses = 9;// fixa svårighetsknapp
+let maxWrongGuesses = 9;
 let currentDifficulty = "easy"
 
 userInput.addEventListener('keydown', function(event){
@@ -62,7 +62,6 @@ guessButton.addEventListener('click', function(){
     }
 });
 
-//lägg till att om man inte klickar i dropdown elementet som nu syns så försvinner den
 settingsButton.addEventListener('click', function(){
     let themeFlag = document.getElementById('theme-switch');
     let togglemenu = document.getElementById('settings-list');
@@ -83,13 +82,12 @@ settingsButton.addEventListener('click', function(){
     togglemenu.classList.toggle('hidden');
 });
 
-
 darkmodeSwitch.addEventListener('click', function() {
     let themeFlag = document.getElementById('theme-switch');
     let root = document.documentElement;
   
     if (themeFlag.classList.contains('light-theme')) {
-        console.log('Switching to dark theme');
+        root.style.setProperty('--textColor', '#e6e4df');
         root.style.setProperty('--primary', '#16213E');
         root.style.setProperty('--secondary', '#0F3460');
         root.style.setProperty('--tertiery', '#533483');
@@ -97,7 +95,7 @@ darkmodeSwitch.addEventListener('click', function() {
         themeFlag.classList.replace('light-theme', 'dark-theme');
         settingsButton.src = settingsButton.src.replace('Light', 'Dark');
     } else if (themeFlag.classList.contains('dark-theme')) {
-        console.log('Switching to light theme');
+        root.style.setProperty('--textColor', '#000000');
         root.style.setProperty('--primary', '#96B6C5');
         root.style.setProperty('--secondary', '#ADC4CE');
         root.style.setProperty('--tertiery', '#EEE0C9');
@@ -107,18 +105,15 @@ darkmodeSwitch.addEventListener('click', function() {
     }
 });
 
-
-
-// WIP kan behöva lägga till ngt mer här för typ prepgame eller likande
 playAgainButton.addEventListener('click', function(){
     overlay.classList.add('hidden');
+    console.log("play again button, winstreak: " + winStreak)
     resetGame();
-    //hard reset?
 });
 
 userNameSubmitButton.addEventListener('click', function () {
     let userInputElement = document.getElementById('username-input-element');
-    if(userInputElement.value !== ''){ // lägg till check om username redan finns ||
+    if(userInputElement.value !== ''){ 
         updateHighscore(userInputElement.value);
         overlay.classList.add('hidden');
         resetGame();
@@ -135,10 +130,10 @@ easyButton.addEventListener('click', function() {changeDifficulty("easy")});
 mediumButton.addEventListener('click', function() {changeDifficulty("medium")});
 hardButton.addEventListener('click', function() {changeDifficulty("hard")});
 
-resetButton.addEventListener('click', resetGame);
+resetButton.addEventListener('click', hardReset);
 
 
-function createCharacterElement(content, id, type) {// makes the DOM element for the characters
+function createCharacterElement(content, id, type) {
     var div = document.createElement('div');
     div.classList.add('character-box')
     var character = document.createElement('p');
@@ -173,7 +168,8 @@ function getRandomElementIn(array){
 }
 
 function hardReset(){
-    //för när man vill starta om, ska sätta alla variabler till noll, winstreak osv. rnesa highscore typ
+    winStreak = 0;
+    resetGame();
 }
 
 function resetGame(){
@@ -229,7 +225,7 @@ function validateGuess(guess){
                 }
                 if(correctGuess === false){
                     wrongGuessDisplay.appendChild(createCharacterElement(guess, incorrectGuessArray.length, "wrong-character-"));
-                    incorrectGuessArray.push(guess); //works on easy but not on medium or hard, not an array?
+                    incorrectGuessArray.push(guess);
                     document.getElementById('input').value = '';
                     checkIfLost();
                 }
@@ -259,9 +255,8 @@ function checkForDigits(string){
     return /\d/.test(string);
 }
 
-function checkIfLost(){//INTE KLAR FIXA SENARE
+function checkIfLost(){
     wrongGuessCount++
-
     updateGallow(wrongGuessCount);
     if(wrongGuessCount === maxWrongGuesses){
         goAgainPrompt('lost');
@@ -294,17 +289,17 @@ function changeDifficulty(clickedDifficulty){
             case "easy":
                 maxWrongGuesses = 9;
                 document.getElementById("hint").classList.remove('hidden');
-                resetGame();
+                hardReset();
             break;
             case "medium":
                 maxWrongGuesses = 6;
                 document.getElementById("hint").classList.add('hidden');
-                resetGame();
+                hardReset();
             break;
             case "hard":
                 maxWrongGuesses = 3;
                 document.getElementById("hint").classList.add('hidden');
-                resetGame();
+                hardReset();
             break;
         }
     }
@@ -341,9 +336,6 @@ function updateGallow(oofNumber){
     
 }
 
-
-// kan behöva skrivas om så den uppdaterar listan korrekt
-//dvs efter highscore och inte efter kronologisk ordning
 function updateHighscore(userName){
     console.log(userName)
     let highscoreWrapper = document.createElement('div');
@@ -352,31 +344,22 @@ function updateHighscore(userName){
     highscoreWrapper.appendChild(highscoreElement);
     highscoreElement.textContent = userName + `: ${winStreak}`;
     highscore.appendChild(highscoreWrapper);
+    winStreak = 0;
 }
 
-
 prepGame();
-console.log(secretWordArray);//  ska bort sen
+console.log(secretWordArray);// so you can cheat if you want ^^
 
 
 
-/* ATT GÖRA
+/* Things i could do to improve the game/website.
 
-- fixa så highscore funkar
+- save the highscores in an array and sort based on winstreak
+  i also would want to make is so if you hover over a highscore it shows stats of some kind.
 
-- fixa vinst och förlust meddelande som inte stör visandet av alla bokstäver.
+- make the settings dropdown dissapear if you dont click inside it. 
 
-- fixa frågandet av namn för highscore
-
-- fixa så att input wrappers barn försvinner och en ny knapp och vinst/förlust medelande är där istället.
-
-- städa kod
-
-- gör det fint   
-
-
-
-
+-get better input validation. i dont accept number but characters like < are. 
 */
 
 

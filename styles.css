@@ -9,10 +9,17 @@
     --secondary: #ADC4CE;
     --tertiery: #EEE0C9;
     --accent: #F1F0E8;
+    --textColor: #000000;
 }
 
 body {
     background-color: var(--secondary);
+    color: var(--textColor);
+}
+
+.center {
+    display: flex;
+    justify-content: center;
 }
 
 .header {
@@ -20,6 +27,7 @@ body {
     align-items: center;
     width: 100%;
     height: 10vh;
+    background-color: var(--primary);
 }
 
 .header > .title {
@@ -117,7 +125,8 @@ body {
 }
 
 .hint-wrapper {
-    height: 18px;
+    height: 28px;
+    padding-bottom: 8px;
 }
 
 #wrong-guess-wrapper {
@@ -143,9 +152,9 @@ body {
 }
 
 .input {
-   position: relative;
-   padding: 10px;
-   height: 20vh;
+    position: relative;
+    padding: 10px;
+    height: 20vh;
 }
 
 .button-layout{
@@ -172,7 +181,7 @@ body {
     flex-direction: column;
     position: absolute;
     width: 100%;
-    height: 100%;
+    height: 170%;
     justify-content: center;
     background-color: var(--secondary);
     top: 0px;
@@ -186,12 +195,26 @@ body {
 
 .overlay-text {
     width: 100%;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px;
+}
+
+.top-content {
+    padding: 12px;
 }
 
 .bottom-content {
-    display: flex;
-    justify-content: space-evenly;
-    padding: 5px;
+    width: 60%;
+    padding-bottom: 5px;
+}
+
+.bottom-content > .large-button {
+    width: 30%;
+}
+
+.bottom-content > .input-field {
+    width: 70%;
 }
 
 .highscore {
@@ -210,27 +233,13 @@ body {
     background-color: darksalmon;
 }
 
-.info {
-
-}
-
-.text-box {
-    
-}
-
 .text-box div {
     width: 45%;
     margin: 4px;
 }
 
-
 .corner-and-highlight {
     border: 2px solid black;
-}
-
-.center {
-    display: flex;
-    justify-content: center;
 }
 
 .hidden {
@@ -239,6 +248,7 @@ body {
 
 .input-field {
     border-radius: 6px;
+    min-width: 30%;
     padding: 6px;
     height: 45px;
     border: 2px solid rgb(100, 100, 100);
@@ -247,6 +257,7 @@ body {
 .large-button {
     border-radius: 6px;
     height: 45px;
+    min-width: 20%;
     margin-left: 3px;
     padding: 6px 12px;
     border: none;
@@ -301,10 +312,48 @@ body {
 
 @media screen and (min-width: 800px) {
 
+    .settings-list {
+        min-width: 200px;
+        max-width: 15%;
+    }
+
+    .main .wrapper {
+        display: flex;
+        justify-content: space-evenly;
+        min-height: 50vh;
+    }
+
+    .wrapper > .wrong-guess-wrapper {
+        min-width: 10%;
+    }
+
+    .wrong-guesses {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .wrong-guesses > div {
+        width: fit-content;
+    }
+
+    .wrapper .column-wrapper {
+        width: 80%;
+        margin-left: auto;
+    }
+
     .gallow img {
-        width: 50%;
+        width: 70%;
         height: auto;
         margin: 5px 0;
+    }
+
+    #play-again {
+        max-width: 300px;
+    }
+
+    .button-layout {
+        flex-direction: row;
     }
 
 }
